@@ -131,6 +131,7 @@ function getSongCommandSections(songCommand, nativeSection) {
 
 function handleSong(body, options, songCommand, nativeSection) {
   var sections = getSongCommandSections(songCommand, nativeSection)
+  console.log(sections)
   var urls = songService.getURLs(songCommand, sections);
 }
 
