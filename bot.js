@@ -55,7 +55,7 @@ function respond() {
 
 function handleCool(body, options) {
   body.text = cool();
-  postMessage(body. options);
+  postMessage(body, options);
 }
 
 // function postMessage() {
