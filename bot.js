@@ -131,8 +131,7 @@ function getSongName(songCommand, numSections) {
     numBeginRemove = 1;
   }
   splitText = splitText.slice(numBeginRemove);
-  console.log(splitText);
-  console.log(splitText.splice(-1));
+  splitText.splice(-numSections);
   return splitText.join(' ');
 }
 
