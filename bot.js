@@ -34,6 +34,7 @@ function respond() {
   var sectionRequest = "";
   console.log(request.group_id == 53713952)
   console.log(request.group_id == "53713952")
+  console.log(typeof request.group_id)
   switch(request.group_id) {
     case 53713952:
       console.log("Test");
