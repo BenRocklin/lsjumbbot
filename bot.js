@@ -96,14 +96,13 @@ function respond() {
   };
 
   var reqText = request.text
-
-  if (matchList(songRegex, reqText) != -1) {
-    this.res.writeHead(200);
-    handleSong(body, options, reqText, sectionRequest);
-    this.res.end();
-  } else if (matchList(helpRegex, reqText) != -1) {
+  if (matchList(helpRegex, reqText) != -1) {
     this.res.writeHead(200);
     handleHelp(body, options);
+    this.res.end();
+  } else if (matchList(songRegex, reqText) != -1) {
+    this.res.writeHead(200);
+    handleSong(body, options, reqText, sectionRequest);
     this.res.end();
   } else if (coolGuyRegex.test(reqText)) {
     this.res.writeHead(200);
@@ -209,7 +208,10 @@ function handleHelp(body, options) {
   helpText += "|||||||||||||||||||||||||||||||||||||||||||||\n";
   helpText += "Active Commands:\n";
   helpText += "~~~~~~~~~~~~~~~~\n";
-  helpText += "\'Show me <song> <sections>\' to get the song for the given sections".
+  helpText += "\'Show me <song> <sections>\' to get the song for the given sections."
+
+  body.text = helpText;
+  postMessage(body, options);
 }
 
 function handleCool(body, options) {
