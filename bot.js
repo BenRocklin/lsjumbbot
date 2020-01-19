@@ -175,9 +175,6 @@ function handleSong(body, options, songCommand, nativeSection) {
         body.attachments = [{
           "type" : "image",
           "url" : sectionUrls[j]
-        }, {
-          "type" : "image",
-          "url" : sectionUrls[j]
         }]
         postMessage(body, options);
       }
