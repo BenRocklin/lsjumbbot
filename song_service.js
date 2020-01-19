@@ -28,7 +28,7 @@ module.exports = {
       urlListSection = urls.songs[section];
       for (var i = 0; i < urlListSection.length; i++) {
         if (urlListSection[i]["title"] === machineName) {
-          urlList.concat(urlListSection[i]["urls"]);
+          urlList = urlList.concat(urlListSection[i]["urls"]);
         }
       }
     }
