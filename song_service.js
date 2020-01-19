@@ -10,11 +10,18 @@ module.exports = {
     var machineName = "";
     for (var aliasIdx = 0; aliasIdx < aliases.aliases.length; aliasIdx++) {
       var potentialName = Object.keys(aliases.aliases[aliasIdx])[0];
-      console.log(aliases.aliases[aliasIdx])
-      console.log(potentialName)
-      console.log(typeof aliases.aliases[aliasIdx]);
-      console.log(aliases.aliases[aliasIdx][potentialName]);
+      var songAliases = aliases.aliases[aliasIdx][potentialName];
+      for (var songAliasIdx = 0; songAliasIdx < songAliases.length; songAliasIdx++) {
+        if (songAliases[songAliasIdx].toLowerCase() === songName.toLowerCase()) {
+          machineName = potentialName;
+          break;
+        }
+      }
+      if (machineName.length > 0) {
+        break;
+      }
     }
+    console.log(machineName)
 
     var urlList = [];
     for (var sectionIdx = 0; sectionIdx < sections.length; sectionIdx++) {
