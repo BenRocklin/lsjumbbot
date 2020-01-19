@@ -15,11 +15,11 @@ function matchList(regexList, query) {
   for (var i = 0; i < regexList.length; i++) {
     if (regexList[i].test(query)) {
         console.log(query + " matched " + regexList[i]);
-        return true;
+        return i;
     }
     
   }
-  return false;
+  return -1;
 }
 
 function respond() {
@@ -28,9 +28,52 @@ function respond() {
   var songRegex = [/^[Ss]how me*/, /^[Ss]ong*/, /^[Cc]affa pl[sz]*/];
   
   console.log(request);
+
+  console.log("Finding group...");
   var id = botID;
   var sectionRequest = "";
-  console.log(request.group_id);
+  switch(request.group_id) {
+    case 53713952:
+      console.log("Test");
+      break;
+    case 56932897:
+      console.log("Altoz");
+      id = botIDAltoz
+      sectionRequest = "altoz";
+      break;
+    case 56932898:
+      console.log("Bonz");
+      id = botIDBonz
+      sectionRequest = "bonz";
+      break;
+    case 56932899:
+      console.log("CPG");
+      id = botIDCpg
+      sectionRequest = "cpg";
+      break;
+    case 56932901:
+      console.log("Mellz");
+      id = botIDMellz
+      sectionRequest = "mellz";
+      break;
+    case 56932902:
+      console.log("Tenrz");
+      id = botIDTenrz
+      sectionRequest = "tenrz";
+      break;
+    case 56932903:
+      console.log("Toobz");
+      id = botIDToobz
+      sectionRequest = "toobz";
+      break;
+    case 56932904:
+      console.log("Trumpz");
+      id = botIDTrumpz
+      sectionRequest = "trumpz";
+      break;
+    default:
+      console.log("UNKNOWN");
+  }
 
   if (!request.text) {
     console.log("No txt");
@@ -46,14 +89,15 @@ function respond() {
   };
 
   body = {
-    "bot_id" : botID,
+    "bot_id" : id,
     "text" : ""
   };
 
-  reqText = request.text
-  if (matchList(songRegex, reqText)) {
+  var reqText = request.text
+
+  if (matchList(songRegex, reqText) != -1) {
     this.res.writeHead(200);
-    handleSong(body, options, reqText);
+    handleSong(body, options, reqText, sectionRequest);
     this.res.end();
   } else if (coolGuyRegex.test(reqText)) {
     this.res.writeHead(200);
@@ -66,8 +110,26 @@ function respond() {
   }
 }
 
+function getSongCommandSections(songCommand, nativeSection) {
+  var sections = [];
+  var splitText = songCommand.toLowerCase().split(" ");
+  if (splitText.length > 0) {
+    for (var i = splitText.length - 1; i >= 0; i--) {
+      if (["altoz", "bonz", "cpg", "mellz", "tenrz", "toobz", "trumpz"].indexOf(splitText[i]) >= 0) {
+        sections.push(splitText[i]);
+      }
+    }
+  }
+  if (nativeSection === "" && sections.length == 0) {
+    sections = ["altoz", "bonz", "cpg", "mellz", "tenrz", "toobz", "trumpz"];
+  } else if (sections.length == 0) {
+    sections = [nativeSection];
+  }
+  return getSongCommandSections
+}
+
 function handleSong(body, options, songCommand, nativeSection) {
-  songService.getURL(songCommand, "Trumpz");
+  var urls = songService.getURLs(songCommand, getSongCommandSections(songCommand, nativeSection));
 }
 
 function handleCool(body, options) {
