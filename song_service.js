@@ -6,13 +6,14 @@ var urls = JSON.parse(songData);
 
 module.exports = {
   getURLs: function(songName, sections) {
-    urlList = []
     console.log(urls.songs.altoz[0])
+    var machineName = "";
     for (var aliasIdx = 0; aliasIdx < aliases.aliases.length; aliasIdx++) {
-      console.log(Object.keys(aliases.aliases[aliasIdx]));
-      console.log(Object.keys(aliases.aliases[aliasIdx])[0]);
+      var potentialName = Object.keys(aliases.aliases[aliasIdx])[0];
+      console.log(aliases.aliases[aliasIdx].potentialName);
     }
 
+    var urlList = [];
     for (var sectionIdx = 0; sectionIdx < sections.length; sectionIdx++) {
       section = sections[sectionIdx];
     }
