@@ -28,6 +28,10 @@ function respond() {
   var songRegex = [/^[Ss]how me*/, /^[Ss]ong*/, /^[Cc]affa pl[sz]*/];
   var helpRegex = [/^[Ss]how me help*/, /^[Hh]elp$/]
   
+  if (request.sender_type === "bot") {
+    console.log("Ignore bot messages.");
+    return
+  }
   console.log(request);
 
   console.log("Finding group...");
@@ -203,12 +207,17 @@ function handleSong(body, options, songCommand, nativeSection) {
 }
 
 function handleHelp(body, options) {
-  var helpText = "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n";
-  helpText += "                LSJUMBot v0.2                \n";
-  helpText += "|||||||||||||||||||||||||||||||||||||||||||||\n";
+  var helpText = "|||||||||||||||||||||||||||||||||||||||||||||||||||||\n";
+  helpText += "                    LSJUMBot v0.2                    \n";
+  helpText += "|||||||||||||||||||||||||||||||||||||||||||||||||||||\n";
   helpText += "Active Commands:\n";
-  helpText += "~~~~~~~~~~~~~~~~\n";
-  helpText += "\'Show me <song> <sections>\' to get the song for the given sections."
+  helpText += "_____________________________________________________\n";
+  helpText += "\'Help\' to access the help menu."
+  helpText += "\'Song <song> <sections>\' to get the song for the given sections."
+  helpText += "_____________________________________________________\n";
+  helpText += "Inactive Commands:\n";
+  helpText += "_____________________________________________________\n";
+
 
   body.text = helpText;
   postMessage(body, options);
