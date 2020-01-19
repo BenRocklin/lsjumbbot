@@ -11,6 +11,7 @@ module.exports = {
     for (var aliasIdx = 0; aliasIdx < aliases.aliases.length; aliasIdx++) {
       var potentialName = Object.keys(aliases.aliases[aliasIdx])[0];
       console.log(aliases.aliases[aliasIdx])
+      console.log(potentialName)
       console.log(aliases.aliases[aliasIdx].potentialName);
     }
 
