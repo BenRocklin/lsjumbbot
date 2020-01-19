@@ -31,7 +31,7 @@ function respond() {
   var helpRegex = [/^[Ss]how me help*/, /^[Hh]elp$/];
   var listRegex = [/^[Ss]how me list*/, /^[Ll]ist$/, /^[Ss]ongs$/];
   var infoRegex = [/^[Ii]nfo*/, /^[Ss]how me info*/];
-  var namesRegex = [/^[Nn]ames*/, /^[Ss]how me names*/];
+  var namesRegex = [/^[Nn]ames*/, /^[Nn]ame/, /^[Ss]how me names*/];
   
   if (request.sender_type === "bot") {
     console.log("Ignore bot messages.");
@@ -155,7 +155,7 @@ function getSongCommandSections(songCommand) {
   return sections
 }
 
-function getSongName(songCommand, numSections = 0) {
+function getSongName(songCommand, numSections) {
   var splitText = songCommand.split(' ');
   if (/^[Ss]how me info*/.test(songCommand) || /^[Ss]how me names*/.test(songCommand)) {
     numBeginRemove = 3;
@@ -266,7 +266,7 @@ function handleList(body, options) {
 }
 
 function handleNames(body, options, reqText) {
-  var songName = getSongName(reqText);
+  var songName = getSongName(reqText, 0);
   console.log(songName);
   var machineName = "";
   // try to find either machine title, alias, or friendly name
