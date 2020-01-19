@@ -159,6 +159,7 @@ function handleSong(body, options, songCommand, nativeSection) {
   sections = getUnique(sections)
 
   var urls = songService.getURLs(songName, sections);
+  console.log(urls)
 }
 
 function handleCool(body, options) {

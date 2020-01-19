@@ -27,10 +27,11 @@ module.exports = {
       section = sections[sectionIdx];
       urlListSection = urls.songs[section];
       for (var i = 0; i < urlListSection.length; i++) {
-        console.log(urlListSection[i])
-        console.log(urlListSection[i]["title"])
+        if (urlListSection[i]["title"] === machineName) {
+          urlList.push(urlListSection[i]["urls"]);
+        }
       }
     }
-    return "www.google.com"
+    return urlList
   }
 };
