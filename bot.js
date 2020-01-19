@@ -2,8 +2,6 @@ var HTTPS = require('https');
 var cool = require('cool-ascii-faces');
   
 var fs = require('fs');
-var data = fs.readFileSync('./image_links.json');
-var url = JSON.parse(data);
 
 
 var botID = process.env.TEST_BOT_ID;
