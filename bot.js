@@ -32,6 +32,8 @@ function respond() {
   console.log("Finding group...");
   var id = botID;
   var sectionRequest = "";
+  console.log(request.group_id == 53713952)
+  console.log(request.group_id == "53713952")
   switch(request.group_id) {
     case 53713952:
       console.log("Test");
