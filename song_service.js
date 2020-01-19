@@ -9,7 +9,7 @@ module.exports = {
     urlList = []
     console.log(urls.songs.altoz[0])
     for (var aliasIdx = 0; aliasIdx < aliases.aliases.length; aliasIdx++) {
-      console.log(aliases.aliases[aliasIdx][0]);
+      console.log(Object.keys(aliases.aliases[aliasIdx]));
     }
 
     for (x in aliases.aliases) {
