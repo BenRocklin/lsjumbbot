@@ -9,11 +9,11 @@ module.exports = {
     urlList = []
     console.log(urls.songs.altoz[0])
     for (var aliasIdx = 0; aliasIdx < aliases.aliases.length; i++) {
-      console.log(aliases.aliases[i]);
+      console.log(aliases.aliases[aliasIdx]);
     }
 
     for (var sectionIdx = 0; sectionIdx < sections.length; sectionIdx++) {
-      section = sections[i];
+      section = sections[sectionIdx];
     }
     return "www.google.com"
   }
