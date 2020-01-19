@@ -62,6 +62,7 @@ module.exports = {
       //   break;
       // }
     }
+    console.log(names.length)
     return names
   }
 };
