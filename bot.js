@@ -3,6 +3,13 @@ var cool = require('cool-ascii-faces');
 var songService = require('./song_service.js')
 
 var botID = process.env.TEST_BOT_ID;
+var botIDAltoz = process.env.BOT_ID_ALTOZ;
+var botIDBonz = process.env.BOT_ID_BONZ;
+var botIDCpg = process.env.BOT_ID_CPG;
+var botIDMellz = process.env.BOT_ID_MELLZ;
+var botIDTenrz = process.env.BOT_ID_TENRZ;
+var botIDToobz = process.env.BOT_ID_TOOBZ;
+var botIDTrumpz = process.env.BOT_ID_TRUMPZ;
 
 function matchList(regexList, query) {
   for (var i = 0; i < regexList.length; i++) {
@@ -21,6 +28,9 @@ function respond() {
   var songRegex = [/^[Ss]how me*/, /^[Ss]ong*/, /^[Cc]affa pl[sz]*/];
   
   console.log(request);
+  var id = botID;
+  var sectionRequest = "";
+  console.log(request.group_id);
 
   if (!request.text) {
     console.log("No txt");
@@ -56,8 +66,8 @@ function respond() {
   }
 }
 
-function handleSong(body, options, songCommand) {
-  songService.getURL(songCommand);
+function handleSong(body, options, songCommand, nativeSection) {
+  songService.getURL(songCommand, "Trumpz");
 }
 
 function handleCool(body, options) {
