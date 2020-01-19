@@ -44,7 +44,7 @@ function respond() {
     console.log("Song detected");
   } else if (coolGuyRegex.test(reqText)) {
     this.res.writeHead(200);
-    postMessage();
+    handleCool(body, options);
     this.res.end();
   } else {
     console.log("No match for " + reqText);
