@@ -49,5 +49,16 @@ module.exports = {
       }
     }
     return urlList
+  },
+
+  getAllFriendlyNames: function(machineName) {
+    var names = "";
+    for (var i = 0; i < titles.titles.length; i++) {
+      names += titles.titles[i][potentialName];
+      if (i != titles.titles.length - 1) {
+        names += '\n';
+      }
+    }
+    return names
   }
 };

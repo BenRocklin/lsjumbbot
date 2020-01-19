@@ -26,7 +26,8 @@ function respond() {
   var request = JSON.parse(this.req.chunks[0]);
   var coolGuyRegex = /^\/cool guy$/;
   var songRegex = [/^[Ss]how me*/, /^[Ss]ong*/, /^[Cc]affa pl[sz]*/];
-  var helpRegex = [/^[Ss]how me help*/, /^[Hh]elp$/]
+  var helpRegex = [/^[Ss]how me help*/, /^[Hh]elp$/];
+  var listRegex = [/^[Ss]how me list*/, /^[Ll]ist$/, /^[Ss]ongs$/];
   
   if (request.sender_type === "bot") {
     console.log("Ignore bot messages.");
@@ -107,6 +108,10 @@ function respond() {
   } else if (matchList(songRegex, reqText) != -1) {
     this.res.writeHead(200);
     handleSong(body, options, reqText, sectionRequest);
+    this.res.end();
+  } else if (matchList(listRegex, reqText) != -1) {
+    this.res.writeHead(200);
+    handleList(body, options, reqText, sectionRequest);
     this.res.end();
   } else if (coolGuyRegex.test(reqText)) {
     this.res.writeHead(200);
@@ -224,6 +229,11 @@ function handleHelp(body, options) {
 
 
   body.text = helpText;
+  postMessage(body, options);
+}
+
+function handleList(body, options) {
+  body.text = songService.getAllFriendlyNames();
   postMessage(body, options);
 }
 
