@@ -139,9 +139,9 @@ function getSongName(songCommand, numSections) {
 
 function getUnique(list) {
   var keys = {};
-  list.forEach(element => {
-    if (!keys[element]) {
-      keys[element] = true;
+  list.forEach(function(i) {
+    if (!keys[i]) {
+      keys[i] = true;
     }
   });
   return Object.keys(keys);
