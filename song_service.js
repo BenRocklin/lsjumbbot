@@ -1,12 +1,13 @@
 var fs = require('fs');
 var aliasData = fs.readFileSync('./alias.json');
 var songData = fs.readFileSync('./song_urls.json');
+var titleData = fs.readFileSync('./titles.json');
 var aliases = JSON.parse(aliasData);
 var urls = JSON.parse(songData);
+var titles = JSON.parse(titleData);
 
 module.exports = {
-  getURLs: function(songName, sections) {
-    console.log(urls.songs.altoz[0])
+  getMachineName: function(songName) {
     var machineName = "";
     for (var aliasIdx = 0; aliasIdx < aliases.aliases.length; aliasIdx++) {
       var potentialName = Object.keys(aliases.aliases[aliasIdx])[0];
@@ -21,7 +22,14 @@ module.exports = {
         break;
       }
     }
+    return machineName
+  },
 
+  getFriendlyName: function(machineName) {
+    return titles.titles[machineName]
+  },
+  
+  getURLs: function(machineName, sections) {
     var urlList = [];
     for (var sectionIdx = 0; sectionIdx < sections.length; sectionIdx++) {
       section = sections[sectionIdx];

@@ -158,8 +158,15 @@ function handleSong(body, options, songCommand, nativeSection) {
   }
   sections = getUnique(sections)
 
-  var urls = songService.getURLs(songName, sections);
-  console.log(urls)
+  var machineName = songService.getMachineName(songName);
+  console.log(machineName);
+  var friendlyName = songService.getFriendlyName(machineName);
+  console.log(friendlyName);
+  var urls = songService.getURLs(machineName, sections);
+  console.log(urls);
+  if (urls.length == 0) {
+    // couldn't find the song
+  }
 }
 
 function handleCool(body, options) {
