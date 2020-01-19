@@ -26,6 +26,7 @@ module.exports = {
   },
 
   getFriendlyName: function(machineName) {
+    console.log(titles.titles);
     return titles.titles[machineName]
   },
   
