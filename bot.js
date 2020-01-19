@@ -188,7 +188,7 @@ function handleSong(body, options, songCommand, nativeSection) {
           "url" : sectionUrls[j]
         }]
         postMessage(body, options);
-        wait(1000);
+        wait(5000);
       }
     } else {
       console.log(section + " failure")
