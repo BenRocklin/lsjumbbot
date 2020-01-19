@@ -9,7 +9,6 @@ const MAX_MESSAGE_LENGTH = 900
 
 module.exports = {
   getMachineName: function(songName) {
-    var machineName = "";
     for (var aliasIdx = 0; aliasIdx < aliases.aliases.length; aliasIdx++) {
       var potentialName = Object.keys(aliases.aliases[aliasIdx])[0];
       var songAliases = aliases.aliases[aliasIdx][potentialName];
@@ -17,15 +16,14 @@ module.exports = {
         console.log(songAliases[songAliasIdx].toLowerCase())
         console.log(songName.toLowerCase())
         if (songAliases[songAliasIdx].toLowerCase() === songName.toLowerCase()) {
-          machineName = potentialName;
-          break;
+          return potentialName
         }
       }
-      if (machineName.length > 0) {
-        break;
-      }
+      // if (machineName.length > 0) {
+      //   break;
+      // }
     }
-    return machineName
+    return ""
   },
 
   getFriendlyName: function(machineName) {
@@ -70,5 +68,16 @@ module.exports = {
       names.push(name);
     }
     return names
+  },
+
+  checkAllForName: function(songName) {
+    for (var i = 0; i < titles.titles.length; i++) {
+      var potentialName = Object.keys(titles.titles[i])[0];
+      if (potentialName.toLowerCase() === songName.toLowerCase() ||
+          titles.titles[i][potentialName].toLowerCase() === songName.toLowerCase()) {
+        return potentialName
+      }
+    }
+    return this.getMachineName(songName)
   }
 };

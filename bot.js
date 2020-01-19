@@ -11,6 +11,8 @@ var botIDTenrz = process.env.BOT_ID_TENRZ;
 var botIDToobz = process.env.BOT_ID_TOOBZ;
 var botIDTrumpz = process.env.BOT_ID_TRUMPZ;
 
+var BOT_VERSION = 0.3
+
 function matchList(regexList, query) {
   for (var i = 0; i < regexList.length; i++) {
     if (regexList[i].test(query)) {
@@ -28,6 +30,8 @@ function respond() {
   var songRegex = [/^[Ss]how me*/, /^[Ss]ong*/, /^[Cc]affa pl[sz]*/];
   var helpRegex = [/^[Ss]how me help*/, /^[Hh]elp$/];
   var listRegex = [/^[Ss]how me list*/, /^[Ll]ist$/, /^[Ss]ongs$/];
+  var infoRegex = [/^[Ii]nfo*/, /^[Ss]how me info*/];
+  var namesRegex = [/^[Nn]ames*/, /^[Ss]how me names*/];
   
   if (request.sender_type === "bot") {
     console.log("Ignore bot messages.");
@@ -102,20 +106,34 @@ function respond() {
 
   var reqText = request.text
   if (matchList(helpRegex, reqText) != -1) {
+    // help menu
     this.res.writeHead(200);
     handleHelp(body, options);
     this.res.end();
-  } else if (matchList(songRegex, reqText) != -1) {
-    this.res.writeHead(200);
-    handleSong(body, options, reqText, sectionRequest);
-    this.res.end();
   } else if (matchList(listRegex, reqText) != -1) {
+    // song list
     this.res.writeHead(200);
-    handleList(body, options, reqText, sectionRequest);
+    handleList(body, options);
+    this.res.end();
+  } else if (matchList(namesRegex, reqText) != -1) {
+    // names command
+    this.res.writeHead(200);
+    handleNames(body, options, reqText);
+    this.res.end();
+  } else if (matchList(infoRegex, reqText) != -1) {
+    // info command
+    this.res.writeHead(200);
+    handleList(body, options, reqText);
     this.res.end();
   } else if (coolGuyRegex.test(reqText)) {
+    // cool guy basic bot test/easter egg
     this.res.writeHead(200);
     handleCool(body, options);
+    this.res.end();
+  } else if (matchList(songRegex, reqText) != -1) {
+    // song request
+    this.res.writeHead(200);
+    handleSong(body, options, reqText, sectionRequest);
     this.res.end();
   } else {
     console.log("No match for " + reqText);
@@ -124,7 +142,7 @@ function respond() {
   }
 }
 
-function getSongCommandSections(songCommand, nativeSection) {
+function getSongCommandSections(songCommand) {
   var sections = [];
   var splitText = songCommand.toLowerCase().split(' ');
   if (splitText.length > 0) {
@@ -137,9 +155,11 @@ function getSongCommandSections(songCommand, nativeSection) {
   return sections
 }
 
-function getSongName(songCommand, numSections) {
+function getSongName(songCommand, numSections = 0) {
   var splitText = songCommand.split(' ');
-  if (/^[Ss]how me*/.test(songCommand) || /^[Cc]affa pl[sz]*/.test(songCommand)) {
+  if (/^[Ss]how me info*/.test(songCommand) || /^[Ss]how me names*/.test(songCommand)) {
+    numBeginRemove = 3;
+  } else if (/^[Ss]how me*/.test(songCommand) || /^[Cc]affa pl[sz]*/.test(songCommand)) {
     numBeginRemove = 2;
   } else {
     numBeginRemove = 1;
@@ -213,12 +233,16 @@ function handleSong(body, options, songCommand, nativeSection) {
 
 function handleHelp(body, options) {
   var helpText = "|||||||||||||||||||||||||||||||||||||||||||||||||||||\n";
-  helpText += "                    LSJUMBot v0.2                    \n";
+  helpText += "                    LSJUMBot v" + BOT_VERSION + "\n";
   helpText += "|||||||||||||||||||||||||||||||||||||||||||||||||||||\n";
-  helpText += "Commands ([] are mandatory, <> are optional):\n";
+  helpText += "Commands:\n";
   helpText += "_______________________________________\n";
-  helpText += "\'Help\' to access the help menu\n"
-  helpText += "\'Song [song] <sections>\' to get the song for the given sections\n"
+  helpText += "\'Help\' to access the help menu\n";
+  helpText += "\'Info\' to understand more about any command\n";
+  helpText += "\'Song\' to get the song for the given sections\n";
+  helpText += "\'List\' to get all songs the bot contains\n";
+  helpText += "\'Names\' to find alternate song names\n";
+  helpText += "\'Credits\' for all bot credits\n";
   helpText += "_______________________________________\n";
   helpText += "On the way:\n";
   helpText += "_______________________________________\n";
@@ -239,7 +263,17 @@ function handleList(body, options) {
     postMessage(body, options);
     wait(7000);
   }
-  // postMessage(body, options);
+}
+
+function handleNames(body, options, reqText) {
+  var songName = getSongName(reqText);
+  console.log(songName);
+  var machineName = "";
+  // try to find either machine title, alias, or friendly name
+  machineName = songService.checkAllForName(songName);
+  console.log(machineName);
+
+  // return all alias
 }
 
 function handleCool(body, options) {
