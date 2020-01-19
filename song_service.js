@@ -26,7 +26,10 @@ module.exports = {
     for (var sectionIdx = 0; sectionIdx < sections.length; sectionIdx++) {
       section = sections[sectionIdx];
       urlListSection = urls.songs[section];
-      console.log(urlListSection)
+      for (var i = 0; i < urlListSection; i++) {
+        console.log(urlListSection[i])
+        console.log(urlListSection[i]["title"])
+      }
     }
     return "www.google.com"
   }
