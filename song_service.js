@@ -7,7 +7,7 @@ var urls = JSON.parse(songData);
 module.exports = {
   getURLs: function(songName, sections) {
     urls = []
-    console.log(url.songs.altoz[0])
+    console.log(urls.songs.altoz[0])
     for (var aliasIdx = 0; aliasIdx < aliases.aliases.length; i++) {
       console.log(aliases.aliases[i]);
     }
