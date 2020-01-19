@@ -32,44 +32,41 @@ function respond() {
   console.log("Finding group...");
   var id = botID;
   var sectionRequest = "";
-  console.log(request.group_id == 53713952)
-  console.log(request.group_id == "53713952")
-  console.log(typeof request.group_id)
   switch(request.group_id) {
-    case 53713952:
+    case '53713952':
       console.log("Test");
       break;
-    case 56932897:
+    case '56932897':
       console.log("Altoz");
       id = botIDAltoz
       sectionRequest = "altoz";
       break;
-    case 56932898:
+    case '56932898':
       console.log("Bonz");
       id = botIDBonz
       sectionRequest = "bonz";
       break;
-    case 56932899:
+    case '56932899':
       console.log("CPG");
       id = botIDCpg
       sectionRequest = "cpg";
       break;
-    case 56932901:
+    case '56932901':
       console.log("Mellz");
       id = botIDMellz
       sectionRequest = "mellz";
       break;
-    case 56932902:
+    case '56932902':
       console.log("Tenrz");
       id = botIDTenrz
       sectionRequest = "tenrz";
       break;
-    case 56932903:
+    case '56932903':
       console.log("Toobz");
       id = botIDToobz
       sectionRequest = "toobz";
       break;
-    case 56932904:
+    case '56932904':
       console.log("Trumpz");
       id = botIDTrumpz
       sectionRequest = "trumpz";
