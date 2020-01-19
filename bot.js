@@ -138,13 +138,13 @@ function getSongName(songCommand, numSections) {
 }
 
 function getUnique(list) {
-  var unique = {};
+  let keys = {};
   list.forEach(element => {
-    if (!unique[element]) {
-      unique[element] = true;
+    if (!keys[element]) {
+      keys[element] = true;
     }
   });
-  return Object.keys(unique);
+  return Object.keys(keys);
 }
 
 function handleSong(body, options, songCommand, nativeSection) {
