@@ -26,7 +26,7 @@ module.exports = {
     for (var sectionIdx = 0; sectionIdx < sections.length; sectionIdx++) {
       section = sections[sectionIdx];
       urlListSection = urls.songs[section];
-      for (var i = 0; i < urlListSection; i++) {
+      for (var i = 0; i < urlListSection.length; i++) {
         console.log(urlListSection[i])
         console.log(urlListSection[i]["title"])
       }
