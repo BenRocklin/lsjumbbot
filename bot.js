@@ -211,12 +211,12 @@ function handleHelp(body, options) {
   helpText += "                    LSJUMBot v0.2                    \n";
   helpText += "|||||||||||||||||||||||||||||||||||||||||||||||||||||\n";
   helpText += "Active Commands:\n";
-  helpText += "_________________________________________________\n";
+  helpText += "__________________________________________\n";
   helpText += "\'Help\' to access the help menu.\n"
   helpText += "\'Song <song> <sections>\' to get the song for the given sections.\n"
-  helpText += "________________________________________________\n";
+  helpText += "________________________________________\n";
   helpText += "Inactive Commands:\n";
-  helpText += "_______________________________________________\n";
+  helpText += "______________________________________\n";
 
 
   body.text = helpText;
