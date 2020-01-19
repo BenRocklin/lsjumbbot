@@ -115,7 +115,8 @@ function getSongCommandSections(songCommand, nativeSection) {
   var splitText = songCommand.toLowerCase().split(' ');
   if (splitText.length > 0) {
     for (var i = splitText.length - 1; i >= 0; i--) {
-      if (["altoz", "bonz", "cpg", "mellz", "tenrz", "toobz", "trumpz"].indexOf(splitText[i]) >= 0) {
+      if (["altoz", "bonz", "cpg", "mellz", "tenrz", "toobz", "trumpz"].indexOf(splitText[i]) >= 0 &&
+         sections.indexOf(splitText[i]) < 0) {
         sections.push(splitText[i]);
       }
     }
@@ -146,7 +147,6 @@ function handleSong(body, options, songCommand, nativeSection) {
   } else if (sections.length == 0) {
     sections = [nativeSection];
   }
-  sections = Array.from(new Set(sections))
 
   var urls = songService.getURLs(songName, sections);
 }
