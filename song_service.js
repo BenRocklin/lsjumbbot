@@ -7,6 +7,9 @@ module.exports = {
     console.log(url.songs.altoz[0])
     console.log(songName)
     console.log(sections)
+    for (var section in sections) {
+      console.log(section)
+    }
     return "www.google.com"
   }
 };

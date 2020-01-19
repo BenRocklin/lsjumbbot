@@ -148,15 +148,15 @@ function getUnique(list) {
 }
 
 function handleSong(body, options, songCommand, nativeSection) {
+  // section and song name setup
   var sections = getSongCommandSections(songCommand, nativeSection);
   var songName = getSongName(songCommand, sections.length);
-
   if (nativeSection === "" && sections.length == 0) {
     sections = ["altoz", "bonz", "cpg", "mellz", "tenrz", "toobz", "trumpz"];
   } else if (sections.length == 0) {
     sections = [nativeSection];
   }
-  console.log(getUnique(sections))
+  sections = getUnique(sections)
 
   var urls = songService.getURLs(songName, sections);
 }
