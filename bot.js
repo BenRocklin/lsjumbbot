@@ -251,6 +251,7 @@ function postMessage(body, options) {
         //neat
       } else {
         console.log('rejecting bad status code ' + res.statusCode);
+        console.log(res)
       }
   });
 

@@ -58,9 +58,9 @@ module.exports = {
       if (i != titles.titles.length - 1) {
         names += '\n';
       }
-      if (i == 30) {
-        break;
-      }
+      // if (i == 30) {
+      //   break;
+      // }
     }
     return names
   }
