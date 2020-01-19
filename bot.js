@@ -168,9 +168,9 @@ function handleSong(body, options, songCommand, nativeSection) {
   sections = getUnique(sections)
 
   var machineName = songService.getMachineName(songName);
-  console.log(machineName);
+  console.log("MACHINE: " + machineName);
   var friendlyName = songService.getFriendlyName(machineName);
-  console.log(friendlyName);
+  console.log("FRIENDLY: " + friendlyName);
   var urls = songService.getURLs(machineName, sections);
   console.log(urls);
   for (var i = 0; i < sections.length; i++) {
@@ -205,7 +205,7 @@ function handleCool(body, options) {
 
 function postMessage(body, options) {
   var botResponse = body.text;
-  console.log('sending ' + botResponse + ' to ' + botID);
+  console.log('sending ' + botResponse + ' to ' + body.id);
 
   botReq = HTTPS.request(options, function(res) {
       if(res.statusCode == 202) {
