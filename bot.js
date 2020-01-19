@@ -177,6 +177,7 @@ function handleSong(body, options, songCommand, nativeSection) {
           "url" : sectionUrls[j]
         }]
         postMessage(body, options);
+        console.log("HI")
       }
     } else {
       console.log(section + " failure")
