@@ -125,6 +125,7 @@ function getSongCommandSections(songCommand, nativeSection) {
   } else if (sections.length == 0) {
     sections = [nativeSection];
   }
+  console.log(sections)
   return getSongCommandSections
 }
 
