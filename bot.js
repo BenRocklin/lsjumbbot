@@ -278,8 +278,7 @@ function handleNames(body, options, reqText) {
 
   // return all alias
   var alias = songService.getAllAliases(machineName);
-  body.text = alias.join("\n");
-  console.log(body.text);
+  body.text = "All possible names for " + songName + " are listed below and are case-insensitive:\n" + alias.join("\n");
 }
 
 function handleCool(body, options) {
