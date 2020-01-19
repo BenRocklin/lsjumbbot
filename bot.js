@@ -148,6 +148,14 @@ function getUnique(list) {
   return Object.keys(keys);
 }
 
+function wait(ms) {
+  var start = Date.now();
+  var now = start;
+  while (now - start < ms) {
+    now = Date.now();
+  }
+}
+
 function handleSong(body, options, songCommand, nativeSection) {
   // section and song name setup
   var sections = getSongCommandSections(songCommand, nativeSection);
@@ -180,7 +188,7 @@ function handleSong(body, options, songCommand, nativeSection) {
           "url" : sectionUrls[j]
         }]
         postMessage(body, options);
-        console.log("HI")
+        wait(1000);
       }
     } else {
       console.log(section + " failure")
