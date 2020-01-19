@@ -130,7 +130,9 @@ function getSongName(songCommand, numSections) {
   } else {
     numBeginRemove = 1;
   }
-  splitText = splitText.slice(numBeginRemove).splice(-numSections);
+  splitText = splitText.slice(numBeginRemove);
+  console.log(splitText);
+  console.log(splitText.splice(-1));
   return splitText.join(' ');
 }
 
