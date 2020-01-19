@@ -26,6 +26,7 @@ function respond() {
     console.log("No txt");
     this.res.writeHead(200);
     this.res.end();
+    return
   }
 
   options = {
@@ -41,7 +42,9 @@ function respond() {
 
   reqText = request.text
   if (matchList(songRegex, reqText)) {
-    console.log("Song detected");
+    this.res.writeHead(200);
+    handleSong(body, options, reqText);
+    this.res.end();
   } else if (coolGuyRegex.test(reqText)) {
     this.res.writeHead(200);
     handleCool(body, options);
@@ -53,26 +56,14 @@ function respond() {
   }
 }
 
+function handleSong(body, options, songCommand) {
+  songService.getURL(songCommand);
+}
+
 function handleCool(body, options) {
   body.text = cool();
   postMessage(body, options);
 }
-
-// function postMessage() {
-//   var botResponse, options, body, botReq;
-
-//   botResponse = cool();
-
-//   options = {
-//     hostname: 'api.groupme.com',
-//     path: '/v3/bots/post',
-//     method: 'POST'
-//   };
-
-//   body = {
-//     "bot_id" : botID,
-//     "text" : botResponse
-//   };
 
 function postMessage(body, options) {
   var botResponse = body.text;
