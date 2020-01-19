@@ -1,19 +1,33 @@
 var HTTPS = require('https');
 var cool = require('cool-ascii-faces');
+var songService = require('./song_service.js')
 
 var botID = process.env.TEST_BOT_ID;
 
+function matchList(regexList, query) {
+  for (var i = 0; i < regexList.length; i++) {
+    if (regexList[i].test(query)) {
+        console.log(query + " matched " + regexList[i]);
+        return true;
+    }
+    
+  }
+  return false;
+}
+
 function respond() {
-  var request = JSON.parse(this.req.chunks[0]),
-      botRegex = /^\/cool guy$/;
+  var request = JSON.parse(this.req.chunks[0]);
+  var coolGuyRegex = /^\/cool guy$/;
+  var songRegex = [/^[Ss]how me */, /^[Ss]ong */, /^[Cc]affa pl[sz] */];
   
   console.log(request);
 
-  if(request.text && botRegex.test(request.text)) {
+  if(request.text && coolGuyRegex.test(request.text)) {
     this.res.writeHead(200);
     postMessage();
     this.res.end();
   } else {
+    
     console.log("don't care");
     this.res.writeHead(200);
     this.res.end();
