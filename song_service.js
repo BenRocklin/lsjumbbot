@@ -10,10 +10,7 @@ module.exports = {
     console.log(urls.songs.altoz[0])
     for (var aliasIdx = 0; aliasIdx < aliases.aliases.length; aliasIdx++) {
       console.log(Object.keys(aliases.aliases[aliasIdx]));
-    }
-
-    for (x in aliases.aliases) {
-      console.log(x);
+      console.log(Object.keys(aliases.aliases[aliasIdx])[0]);
     }
 
     for (var sectionIdx = 0; sectionIdx < sections.length; sectionIdx++) {
