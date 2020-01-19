@@ -192,7 +192,7 @@ function handleSong(body, options, songCommand, nativeSection) {
       }
     } else {
       console.log(section + " failure")
-      body.text = "Sorry, we could not find the " + section + " chart for " + friendlyName;
+      body.text = "Sorry, we could not find the " + section + " chart for " + songName;
       postMessage(body, options);
     }
   }
