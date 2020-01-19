@@ -115,8 +115,7 @@ function getSongCommandSections(songCommand, nativeSection) {
   var splitText = songCommand.toLowerCase().split(' ');
   if (splitText.length > 0) {
     for (var i = splitText.length - 1; i >= 0; i--) {
-      if (["altoz", "bonz", "cpg", "mellz", "tenrz", "toobz", "trumpz"].indexOf(splitText[i]) >= 0 &&
-         sections.indexOf(splitText[i]) < 0) {
+      if (["altoz", "bonz", "cpg", "mellz", "tenrz", "toobz", "trumpz"].indexOf(splitText[i]) >= 0) {
         sections.push(splitText[i]);
       }
     }
@@ -138,6 +137,16 @@ function getSongName(songCommand, numSections) {
   return splitText.join(' ');
 }
 
+function getUnique(list) {
+  let unique = {};
+  list.forEach(element => {
+    if (!unique[element]) {
+      unique[element] = true;
+    }
+  });
+  return Object.keys(unique);
+}
+
 function handleSong(body, options, songCommand, nativeSection) {
   var sections = getSongCommandSections(songCommand, nativeSection);
   var songName = getSongName(songCommand, sections.length);
@@ -147,6 +156,7 @@ function handleSong(body, options, songCommand, nativeSection) {
   } else if (sections.length == 0) {
     sections = [nativeSection];
   }
+  console.log(getUnique(sections))
 
   var urls = songService.getURLs(songName, sections);
 }
