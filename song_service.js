@@ -13,15 +13,12 @@ module.exports = {
       var potentialName = Object.keys(aliases.aliases[aliasIdx])[0];
       var songAliases = aliases.aliases[aliasIdx][potentialName];
       for (var songAliasIdx = 0; songAliasIdx < songAliases.length; songAliasIdx++) {
-        console.log(songAliases[songAliasIdx].toLowerCase())
-        console.log(songName.toLowerCase())
+        // console.log(songAliases[songAliasIdx].toLowerCase())
+        // console.log(songName.toLowerCase())
         if (songAliases[songAliasIdx].toLowerCase() === songName.toLowerCase()) {
           return potentialName
         }
       }
-      // if (machineName.length > 0) {
-      //   break;
-      // }
     }
     return ""
   },

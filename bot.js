@@ -27,11 +27,11 @@ function matchList(regexList, query) {
 function respond() {
   var request = JSON.parse(this.req.chunks[0]);
   var coolGuyRegex = /^\/cool guy$/;
-  var songRegex = [/^[Ss]how me*/, /^[Ss]ong*/, /^[Cc]affa pl[sz]*/];
-  var helpRegex = [/^[Ss]how me help*/, /^[Hh]elp$/];
-  var listRegex = [/^[Ss]how me list*/, /^[Ll]ist$/, /^[Ss]ongs$/];
-  var infoRegex = [/^[Ii]nfo*/, /^[Ss]how me info*/];
-  var namesRegex = [/^[Nn]ames*/, /^[Nn]ame/, /^[Ss]how me names*/];
+  var songRegex = [/^[Ss]how me/, /^[Ss]ong/, /^[Cc]affa pl[sz]/];
+  var helpRegex = [/^[Ss]how me help/, /^[Hh]elp$/];
+  var listRegex = [/^[Ss]how me list/, /^[Ll]ist$/, /^[Ss]ongs$/];
+  var infoRegex = [/^[Ii]nfo/, /^[Ss]how me info/];
+  var namesRegex = [/^[Nn]ames/, /^[Nn]ame/, /^[Ss]how me names/];
   
   if (request.sender_type === "bot") {
     console.log("Ignore bot messages.");
