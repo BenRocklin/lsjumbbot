@@ -1,0 +1,283 @@
+{
+    "aliases": [
+        {
+            "16MilitaryWives": ["16", "16 Military Wives", "Sixteen", "Sixteen Military Wives", "Military Wives", "Wives", "Military"]
+        },
+        {
+            "A-Punk": ["A-Punk", "A Punk", "Punk"]
+        },
+        {
+            "AllRightNow(VictoryMix)": ["ARN V Mix", "ARN V-Mix", "ARN Victory Mix", "ARN Victory", "Victory Mix", "Victory", "V-Mix", "V Mix", "Win", "Win Song", "All Right Now V Mix", "All Right Now V-Mix", "All Right Now Victory Mix", "All Right Now Victory"]
+        },
+        {
+            "AllRightNow": ["All Right Now", "ARN"]
+        },
+        {
+            "AllRightNowBonzVariations": ["ARN Bonz", "ARN Bonz Riffs", "ARN Bonz Riffz", "All Right Now Bonz", "All Right Now Bonz Riffs", "All Right Now Bonz Riffz", "Bonz Riffs", "Bonz Riffz"]
+        },
+        {
+            "AlltheLights": ["All the Lights", "AtL", "Lights", "All of the Lights"]
+        },
+        {
+            "Aqualung": ["Aqualung"]
+        },
+        {
+            "AreYouGonnaBeMyGirl": ["My girl", "Are you gonna be my girl", "Are you gonna be my girl?", "Would you please do me the pleasure of being my lady"]
+        },
+        {
+            "BasketCase": ["Basket", "Basket Case"]
+        },
+        {
+            "BasketballBanner": ["Basketball Banner", "Basketball anthem", "Basketball Murica", "Basketball Merica"]
+        },
+        {
+            "Battle": ["Battle", "Battle without honor or humanity", "Honor or humanity"]
+        },
+        {
+            "Beginnings": ["Beginnings", "picnic day", "Davis day", "Beginning"]
+        },
+        {
+            "BillTell": ["Bill tell", "William Tell Overture", "Bill", "Death to Trumpz Chops"]
+        },
+        {
+            "BlueCollarMan": ["Blue collar", "Blue collar man"]
+        },
+        {
+            "Brooklyn": ["Brooklyn"]
+        },
+        {
+            "ComeJointheBand": ["Come Join", "Come Join the Band"]
+        },
+        {
+            "ComeOutandPlay": ["Come Out and Play", "Come Out", "Come Play", "Keep them separated", "Keep em separated", "Gotta Keep them separated", "Gotta Keep em separated"]
+        },
+        {
+            "ComeonEileen": ["Eileen", "Come On", "come on eileen"]
+        },
+        {
+            "ComoVes": ["como ves", "como", "ves"]
+        },
+        {
+            "Dammit": ["dammit", "damn it"]
+        },
+        {
+            "DiesIrae": ["dies irae", "bearial"]
+        },
+        {
+            "DirtyLittleSecret": ["dirty little secret"]
+        },
+        {
+            "Don_tYouWorry_BoutaThing": ["dont you worry bout a thing", "don't you worry bout a thing", "dont you worry about a thing", "don't you worry about a thing", "dont worry bout a thing", "don't worry bout a thing", "dont worry about a thing", "don't worry about a thing", "don't worry", "dont worry"]
+        },
+        {
+            "DowntotheBone": ["the bone", "down to the bone"]
+        },
+        {
+            "DowntotheNightclub": ["down to the nightclub", "the nightclub", "nightclub"]
+        },
+        {
+            "DrunkenLullabies": ["drunken", "drunk", "drunken lullabies", "lullabies"]
+        },
+        {
+            "Everybody_sEverything": ["everybodys", "everybody", "everybody's", "everybodys everything", "everybody everything", "everybody's everything"]
+        },
+        {
+            "Fall2019Teazers": ["teazers", "teasers"]
+        },
+        {
+            "FarmLivin_": ["farm living", "farm livin", "living", "livin"]
+        },
+        {
+            "Ffun": ["fun fun fun", "ffun", "fun", "fffun"]
+        },
+        {
+            "FingeringChart": []
+        },
+        {
+            "FiveFifteen": ["five fifteen", "515", "5:15"]
+        },
+        {
+            "Flashlight": ["flashlight"]
+        },
+        {
+            "Foreplay": ["foreplay", "4play"]
+        },
+        {
+            "GolgiApparatus": ["golgi", "golgi apparatus", "apparatus"]
+        },
+        {
+            "HailStanfordHail": ["hail", "hail stanford hail", "hail stanford", "stanford hail"]
+        },
+        {
+            "HardtoHandle": ["hard to handle"]
+        },
+        {
+            "Hell": ["hell"]
+        },
+        {
+            "HereinyourBedroom": ["here in your bedroom", "bedroom"]
+        },
+        {
+            "HeyBigBrother": ["hey big brother", "big brother"]
+        },
+        {
+            "HigherGround": ["higher ground", "high ground"]
+        },
+        {
+            "Holiday": ["holiday"]
+        },
+        {
+            "HonkyTonk": ["honky", "honky tonk"]
+        },
+        {
+            "IWish": ["i wish", "eye wish"]
+        },
+        {
+            "Ignorance": ["ignorance"]
+        },
+        {
+            "KnightsofCydonia": ["knights", "knights of cydonia", "cydonia"]
+        },
+        {
+            "LifeintheFastLane": ["fast lane", "life in the fast lane"]
+        },
+        {
+            "LittleSecrets": ["little secrets", "secrets"]
+        },
+        {
+            "Livin_intheUSA": ["livin in the usa", "living in the usa"]
+        },
+        {
+            "Longview": ["longview", "long view"]
+        },
+        {
+            "Lucretia": ["lucretia"]
+        },
+        {
+            "MrJones": ["jones", "mr jones", "mr. jones", "mister jones"]
+        },
+        {
+            "NaNaNa": ["nanana", "na na na", "na", "no", "no no no", "nonono"]
+        },
+        {
+            "NoRain": ["no rain", "rain"]
+        },
+        {
+            "ObviousChild": ["obvious", "obvious child", "the obvious child"]
+        },
+        {
+            "OceanAvenue": ["ocean avenue"]
+        },
+        {
+            "OlympicsTheme(Bugler_sDream)": ["olympics", "olympics theme"]
+        },
+        {
+            "OnMyWay": ["on my way"]
+        },
+        {
+            "OneataTime": ["one at a time"]
+        },
+        {
+            "OurHouse": ["our house"]
+        },
+        {
+            "PanicStation": ["panic", "panic station"]
+        },
+        {
+            "PeaceofMind": ["peace", "peace of mind", "piece", "piece of mind"]
+        },
+        {
+            "Question": ["question"]
+        },
+        {
+            "RadarLove": ["radar", "radar love"]
+        },
+        {
+            "Reptilia": ["reptilia"]
+        },
+        {
+            "RoughGem": ["rough gem"]
+        },
+        {
+            "RubberbandMan": ["rubber", "rubberband", "rubberband man", "rubber band", "rubber band man"]
+        },
+        {
+            "RubySoho": ["ruby", "ruby soho"]
+        },
+        {
+            "SampleinaJar": ["sample", "jar", "sample in a jar"]
+        },
+        {
+            "She_sNotThere": ["shes", "shes not there", "she's", "she's not there"]
+        },
+        {
+            "ShortSkirtLongJacket": ["short skirt", "long jacket", "short skirt long jacket", "short skirt, long jacket"]
+        },
+        {
+            "SmoothCriminal": ["smooth criminal"]
+        },
+        {
+            "SousaARN": ["sousa", "sousa arn"]
+        },
+        {
+            "Spiderwebs": ["spiderwebs"]
+        },
+        {
+            "Spoonman": ["spoonman"]
+        },
+        {
+            "Steam": ["steam"]
+        },
+        {
+            "StuffLikeThat": ["stuff", "stuff like that"]
+        },
+        {
+            "Swingtown": ["swingtown", "swing town"]
+        },
+        {
+            "TakeMeOut": ["take me out"]
+        },
+        {
+            "TeartheRoofOff": ["tear", "tear the roof", "tear the roof off", "give up the funk"]
+        },
+        {
+            "TeazerAddenda2": ["teazer addenda", "teazer addendum", "old teazerz", "old teazers", "teaser addenda", "teaser addendum", "old teasers", "old teaserz"]
+        },
+        {
+            "TheStarSpangledBanner": ["banner", "usa", "star spangled banner", "the star spangled banner"]
+        },
+        {
+            "ThroneRoomFanfare": ["throne room", "star wars", "throne room fanfare"]
+        },
+        {
+            "TightenUp": ["tighten up"]
+        },
+        {
+            "WelcometoParadise": ["welcome", "paradise", "welcome to paradise"]
+        },
+        {
+            "WelcometotheBlackParade": ["black parade", "welcome to the black parade"]
+        },
+        {
+            "WhatisHip": ["hip", "what is hip", "what is hip?"]
+        },
+        {
+            "WhisperYourName": ["whisper", "whisper your name"]
+        },
+        {
+            "WhitePunksonDope": ["white punks", "punks", "white punks on dope"]
+        },
+        {
+            "WhyCan_tWeBeFriends": ["why cant we be friends", "why can't we be friends", "friends", "why cant we be friends?", "why can't we be friends?"]
+        },
+        {
+            "YellowRiver": ["yellow", "yellow river"]
+        },
+        {
+            "YoureGonnaGoFarKid": ["yggfk", "ygfk", "youre gonna go far kid", "youre going go far kid", "youre going to go far kid", "far kid", "youre gonna go far", "youre going go far", "youre going to go far", "you're gonna go far kid", "you're going go far kid", "you're going to go far kid", "you're gonna go far", "you're going go far", "you're going to go far"]
+        },
+        {
+            "ZootSuitRiot": ["zoot", "zoot suit", "zoot suit riot"]
+        }
+    ]
+}
