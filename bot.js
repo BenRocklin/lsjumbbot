@@ -210,13 +210,15 @@ function handleHelp(body, options) {
   var helpText = "|||||||||||||||||||||||||||||||||||||||||||||||||||||\n";
   helpText += "                    LSJUMBot v0.2                    \n";
   helpText += "|||||||||||||||||||||||||||||||||||||||||||||||||||||\n";
-  helpText += "Active Commands:\n";
-  helpText += "__________________________________________\n";
-  helpText += "\'Help\' to access the help menu.\n"
-  helpText += "\'Song <song> <sections>\' to get the song for the given sections.\n"
-  helpText += "________________________________________\n";
-  helpText += "Inactive Commands:\n";
-  helpText += "______________________________________\n";
+  helpText += "Commands ([] are mandatory, <> are optional):\n";
+  helpText += "_______________________________________\n";
+  helpText += "\'Help\' to access the help menu\n"
+  helpText += "\'Song [song] <sections>\' to get the song for the given sections\n"
+  helpText += "_______________________________________\n";
+  helpText += "On the way:\n";
+  helpText += "_______________________________________\n";
+  helpText += "\'Info [command]\' to get additional information on the command\n";
+  helpText += "\'Canonical <date>\' to get the canonical for the date\n";
 
 
   body.text = helpText;
