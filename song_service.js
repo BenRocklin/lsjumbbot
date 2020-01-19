@@ -57,6 +57,7 @@ module.exports = {
     var name = "";
     for (var i = 0; i < titles.titles.length; i++) {
       name += titles.titles[i][Object.keys(titles.titles[i])[0]];
+      console.log(titles.titles[i][Object.keys(titles.titles[i])[0]])
       if (name.length >= MAX_MESSAGE_LENGTH) {
         names.push(name);
         name = "";
