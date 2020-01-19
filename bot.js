@@ -146,7 +146,7 @@ function handleSong(body, options, songCommand, nativeSection) {
   } else if (sections.length == 0) {
     sections = [nativeSection];
   }
-  sections = [...Set(sections)]
+  sections = [...new Set(sections)]
 
   var urls = songService.getURLs(songName, sections);
 }
