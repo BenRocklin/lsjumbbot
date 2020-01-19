@@ -201,7 +201,7 @@ function handleSong(body, options, songCommand, nativeSection) {
           "url" : sectionUrls[j]
         }]
         postMessage(body, options);
-        wait(5000);
+        wait(7000);
       }
     } else {
       console.log(section + " failure")
@@ -233,7 +233,12 @@ function handleHelp(body, options) {
 }
 
 function handleList(body, options) {
-  body.text = songService.getAllFriendlyNames();
+  nameList = songService.getAllFriendlyNames();
+  for (var i = 0; i < nameList.length; i++) {
+    body.text = nameList[i];
+    postMessage(body, options);
+    wait(7000);
+  }
   // postMessage(body, options);
 }
 
