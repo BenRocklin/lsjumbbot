@@ -203,7 +203,7 @@ function handleSong(body, options, songCommand, nativeSection) {
 }
 
 function handleHelp(body, options) {
-  var helpText = "|||||||||||||||||||||||||||||||||||||||||||||\n";
+  var helpText = "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n";
   helpText += "                LSJUMBot v0.2                \n";
   helpText += "|||||||||||||||||||||||||||||||||||||||||||||\n";
   helpText += "Active Commands:\n";
