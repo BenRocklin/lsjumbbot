@@ -213,7 +213,7 @@ function handleSong(body, options, songCommand, nativeSection) {
       body.text = "Here's the " + section + " chart for " + friendlyName;
       sectionUrls = urls[section];
       for (var j = 0; j < sectionUrls.length; j++) {
-        if (sectionUrls.length > 0) {
+        if (sectionUrls.length > 1) {
           body.text = "Here's the " + section + " chart for " + friendlyName + " (" + (j + 1) + "/" + sectionUrls.length + ")";
         }
         body.attachments = [{
@@ -271,9 +271,15 @@ function handleNames(body, options, reqText) {
   var machineName = "";
   // try to find either machine title, alias, or friendly name
   machineName = songService.checkAllForName(songName);
-  console.log(machineName);
+  if (machineName === "") {
+    body.text = "Sorry, we could not find the song named " + songName;
+    postMessage(body, options);
+  }
 
   // return all alias
+  var alias = songService.getAllAliases(machineName);
+  body.text = alias.join("\n");
+  console.log(body.text);
 }
 
 function handleCool(body, options) {

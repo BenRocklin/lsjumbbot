@@ -47,6 +47,18 @@ module.exports = {
     return urlList
   },
 
+  getAllAliases: function(machineName) {
+    var aliasList = [];
+    for (var aliasIdx = 0; aliasIdx < aliases.aliases.length; aliasIdx++) {
+      var potentialName = Object.keys(aliases.aliases[aliasIdx])[0];
+      if (potentialName === machineName) {
+        aliasList = aliases.aliases[aliasIdx][potentialName];
+      }
+    }
+    aliasList.push(this.getFriendlyName(machineName));
+    return aliasList
+  },
+
   getAllFriendlyNames: function(machineName) {
     var names = []
     var name = "";
@@ -72,7 +84,6 @@ module.exports = {
       var potentialName = Object.keys(titles.titles[i])[0];
       if (potentialName.toLowerCase() === songName.toLowerCase() ||
           titles.titles[i][potentialName].toLowerCase() === songName.toLowerCase()) {
-        console.log(titles.titles[i][potentialName]);
         return potentialName
       }
     }
