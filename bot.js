@@ -172,6 +172,9 @@ function handleSong(body, options, songCommand, nativeSection) {
       body.text = "Here's the " + section + " chart for " + friendlyName;
       sectionUrls = urls[section];
       for (var j = 0; j < sectionUrls.length; j++) {
+        if (sectionUrls.length > 0) {
+          body.text = "Here's the " + section + " chart for " + friendlyName + " (" + j + "/" + sectionUrls.length + ")";
+        }
         body.attachments = [{
           "type" : "image",
           "url" : sectionUrls[j]
