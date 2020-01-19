@@ -18,7 +18,7 @@ function matchList(regexList, query) {
 function respond() {
   var request = JSON.parse(this.req.chunks[0]);
   var coolGuyRegex = /^\/cool guy$/;
-  var songRegex = [/^[Ss]how me */, /^[Ss]ong */, /^[Cc]affa pl[sz] */];
+  var songRegex = [/^[Ss]how me\s*/, /^[Ss]ong\s*/, /^[Cc]affa pl[sz]\s*/];
   
   console.log(request);
 
