@@ -5,6 +5,7 @@ var titleData = fs.readFileSync('./titles.json');
 var aliases = JSON.parse(aliasData);
 var urls = JSON.parse(songData);
 var titles = JSON.parse(titleData);
+const MAX_MESSAGE_LENGTH = 900
 
 module.exports = {
   getMachineName: function(songName) {
@@ -52,17 +53,20 @@ module.exports = {
   },
 
   getAllFriendlyNames: function(machineName) {
-    var names = "";
+    var names = []
+    var name = "";
     for (var i = 0; i < titles.titles.length; i++) {
-      names += titles.titles[i][Object.keys(titles.titles[i])[0]];
-      if (i != titles.titles.length - 1) {
-        names += '\n';
+      name += titles.titles[i][Object.keys(titles.titles[i])[0]];
+      if (name.length >= MAX_MESSAGE_LENGTH) {
+        names.push(name);
+        name = "";
+        continue;
       }
-      // if (i == 30) {
-      //   break;
-      // }
+      if (i != titles.titles.length - 1) {
+        name += '\n';
+      }
     }
-    console.log(names.length)
+    console.log(names)
     return names
   }
 };

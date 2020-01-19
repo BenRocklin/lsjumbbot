@@ -234,7 +234,7 @@ function handleHelp(body, options) {
 
 function handleList(body, options) {
   body.text = songService.getAllFriendlyNames();
-  postMessage(body, options);
+  // postMessage(body, options);
 }
 
 function handleCool(body, options) {
@@ -251,7 +251,6 @@ function postMessage(body, options) {
         //neat
       } else {
         console.log('rejecting bad status code ' + res.statusCode);
-        console.log(res)
       }
   });
 
