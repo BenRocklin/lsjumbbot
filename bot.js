@@ -18,16 +18,24 @@ function matchList(regexList, query) {
 function respond() {
   var request = JSON.parse(this.req.chunks[0]);
   var coolGuyRegex = /^\/cool guy$/;
-  var songRegex = [/^[Ss]how me\s*/, /^[Ss]ong\s*/, /^[Cc]affa pl[sz]\s*/];
+  var songRegex = [/^[Ss]how me*/, /^[Ss]ong*/, /^[Cc]affa pl[sz]*/];
   
   console.log(request);
 
-  if(request.text && coolGuyRegex.test(request.text)) {
+  if (!request.text) {
+    console.log("No txt");
+    this.res.writeHead(200);
+    this.res.end();
+    return
+  }
+
+  reqText = request.text
+  if (coolGuyRegex.test(reqText)) {
     this.res.writeHead(200);
     postMessage();
     this.res.end();
   } else {
-    console.log(matchList(songRegex, request.text))
+    console.log(matchList(songRegex, reqText))
     console.log("don't care");
     this.res.writeHead(200);
     this.res.end();
