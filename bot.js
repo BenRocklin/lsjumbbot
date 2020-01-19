@@ -176,14 +176,15 @@ function handleSong(body, options, songCommand, nativeSection) {
           "type" : "image",
           "url" : sectionUrls[j]
         }]
-        postMessage(body, options);
+        postMessageNoEnd(body, options);
       }
     } else {
       console.log(section + " failure")
       body.text = "Sorry, we could not find the " + section + " chart for " + friendlyName;
-      postMessage(body, options);
+      postMessageNoEnd(body, options);
     }
   }
+  botReq.end(JSON.stringify(body));
 }
 
 function handleCool(body, options) {
@@ -210,6 +211,26 @@ function postMessage(body, options) {
     console.log('timeout posting message '  + JSON.stringify(err));
   });
   botReq.end(JSON.stringify(body));
+}
+
+function postMessageNoEnd(body, options) {
+  var botResponse = body.text;
+  console.log('sending ' + botResponse + ' to ' + botID);
+
+  botReq = HTTPS.request(options, function(res) {
+      if(res.statusCode == 202) {
+        //neat
+      } else {
+        console.log('rejecting bad status code ' + res.statusCode);
+      }
+  });
+
+  botReq.on('error', function(err) {
+    console.log('error posting message '  + JSON.stringify(err));
+  });
+  botReq.on('timeout', function(err) {
+    console.log('timeout posting message '  + JSON.stringify(err));
+  });
 }
 
 
