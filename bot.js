@@ -211,12 +211,12 @@ function handleHelp(body, options) {
   helpText += "                    LSJUMBot v0.2                    \n";
   helpText += "|||||||||||||||||||||||||||||||||||||||||||||||||||||\n";
   helpText += "Active Commands:\n";
-  helpText += "_____________________________________________________\n";
-  helpText += "\'Help\' to access the help menu."
-  helpText += "\'Song <song> <sections>\' to get the song for the given sections."
-  helpText += "_____________________________________________________\n";
+  helpText += "_________________________________________________\n";
+  helpText += "\'Help\' to access the help menu.\n"
+  helpText += "\'Song <song> <sections>\' to get the song for the given sections.\n"
+  helpText += "________________________________________________\n";
   helpText += "Inactive Commands:\n";
-  helpText += "_____________________________________________________\n";
+  helpText += "_______________________________________________\n";
 
 
   body.text = helpText;
@@ -230,7 +230,7 @@ function handleCool(body, options) {
 
 function postMessage(body, options) {
   var botResponse = body.text;
-  console.log('sending ' + botResponse + ' to ' + body.id);
+  console.log('sending ' + botResponse + ' to ' + body["bot_id"]);
 
   botReq = HTTPS.request(options, function(res) {
       if(res.statusCode == 202) {
