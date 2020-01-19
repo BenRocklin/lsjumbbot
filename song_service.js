@@ -4,7 +4,7 @@ var url = JSON.parse(data);
 
 module.exports = {
   getURL: function(songName) {
-    console.log(url)
+    console.log(url.songs.altoz[0])
     return "www.google.com"
   }
 };
