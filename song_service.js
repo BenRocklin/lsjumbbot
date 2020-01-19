@@ -72,6 +72,7 @@ module.exports = {
       var potentialName = Object.keys(titles.titles[i])[0];
       if (potentialName.toLowerCase() === songName.toLowerCase() ||
           titles.titles[i][potentialName].toLowerCase() === songName.toLowerCase()) {
+        console.log(titles.titles[i][potentialName]);
         return potentialName
       }
     }
