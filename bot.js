@@ -36,7 +36,7 @@ function respond() {
 
   body = {
     "bot_id" : botID,
-    "text" : botResponse
+    "text" : ""
   };
 
   reqText = request.text
