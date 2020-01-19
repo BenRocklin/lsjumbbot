@@ -27,7 +27,14 @@ module.exports = {
 
   getFriendlyName: function(machineName) {
     console.log(titles.titles);
-    return titles.titles[machineName]
+    console.log(machineName)
+    for (var i = 0; i < titles.titles.length; i++) {
+      var potentialName = Object.keys(titles.titles[i])[0];
+      if (potentialName === machineName) {
+        return titles.titles[i][potentialName];
+      }
+    }
+    return machineName
   },
   
   getURLs: function(machineName, sections) {
