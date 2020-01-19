@@ -8,7 +8,7 @@ module.exports = {
   getURLs: function(songName, sections) {
     urlList = []
     console.log(urls.songs.altoz[0])
-    for (var aliasIdx = 0; aliasIdx < aliases.aliases.length; i++) {
+    for (var aliasIdx = 0; aliasIdx < aliases.aliases.length; aliasIdx++) {
       console.log(aliases.aliases[aliasIdx]);
     }
 
