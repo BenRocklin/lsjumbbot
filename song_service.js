@@ -6,7 +6,6 @@ module.exports = {
   getURLs: function(songName, sections) {
     console.log(url.songs.altoz[0])
     console.log(sections)
-    console.log(sections[0])
     return "www.google.com"
   }
 };
