@@ -12,6 +12,10 @@ module.exports = {
       console.log(aliases.aliases[aliasIdx]);
     }
 
+    for (x in aliases.aliases) {
+      console.log(x);
+    }
+
     for (var sectionIdx = 0; sectionIdx < sections.length; sectionIdx++) {
       section = sections[sectionIdx];
     }
