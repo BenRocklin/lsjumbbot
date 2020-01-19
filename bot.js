@@ -140,11 +140,13 @@ function getSongName(songCommand, numSections) {
 function handleSong(body, options, songCommand, nativeSection) {
   var sections = getSongCommandSections(songCommand, nativeSection);
   var songName = getSongName(songCommand, sections.length);
+
   if (nativeSection === "" && sections.length == 0) {
     sections = ["altoz", "bonz", "cpg", "mellz", "tenrz", "toobz", "trumpz"];
   } else if (sections.length == 0) {
     sections = [nativeSection];
   }
+  sections = [...Set(sections)]
 
   var urls = songService.getURLs(songName, sections);
 }
