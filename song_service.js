@@ -12,7 +12,8 @@ module.exports = {
       var potentialName = Object.keys(aliases.aliases[aliasIdx])[0];
       console.log(aliases.aliases[aliasIdx])
       console.log(potentialName)
-      console.log(Object.values(aliases.aliases[aliasIdx]));
+      console.log(typeof aliases.aliases[aliasIdx]);
+      console.log(aliases.aliases[aliasIdx][potentialName]);
     }
 
     var urlList = [];
