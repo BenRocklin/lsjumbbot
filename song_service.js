@@ -36,13 +36,13 @@ module.exports = {
   },
   
   getURLs: function(machineName, sections) {
-    var urlList = [];
+    var urlList = {};
     for (var sectionIdx = 0; sectionIdx < sections.length; sectionIdx++) {
       section = sections[sectionIdx];
       urlListSection = urls.songs[section];
       for (var i = 0; i < urlListSection.length; i++) {
         if (urlListSection[i]["title"] === machineName) {
-          urlList = urlList.concat(urlListSection[i]["urls"]);
+          urlList[section] = urlListSection[i]["urls"];
         }
       }
     }

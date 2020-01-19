@@ -90,7 +90,8 @@ function respond() {
 
   body = {
     "bot_id" : id,
-    "text" : ""
+    "text" : "",
+    "attachments" : []
   };
 
   var reqText = request.text
@@ -164,8 +165,24 @@ function handleSong(body, options, songCommand, nativeSection) {
   console.log(friendlyName);
   var urls = songService.getURLs(machineName, sections);
   console.log(urls);
-  if (urls.length == 0) {
-    // couldn't find the song
+  for (var i = 0; i < sections.length; i++) {
+    section = sections[i];
+    if (section in urls) {
+      console.log(urls[section])
+      body.text = "Here's the " + section + " chart for " + friendlyName;
+      sectionUrls = urls[section];
+      for (var j = 0; j < sections.length; j++) {
+        body.attachments = [{
+          "type" : "image",
+          "url" : sectionUrls[j]
+        }]
+        postMessage(body, options);
+      }
+    } else {
+      console.log(section + " failure")
+      body.text = "Sorry, we could not find the " + section + " chart for " + friendlyName;
+      postMessage(body, options);
+    }
   }
 }
 
