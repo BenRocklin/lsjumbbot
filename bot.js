@@ -26,6 +26,7 @@ function respond() {
   var request = JSON.parse(this.req.chunks[0]);
   var coolGuyRegex = /^\/cool guy$/;
   var songRegex = [/^[Ss]how me*/, /^[Ss]ong*/, /^[Cc]affa pl[sz]*/];
+  var helpRegex = [/^[Ss]how me help*/, /^[Hh]elp$/]
   
   console.log(request);
 
@@ -99,6 +100,10 @@ function respond() {
   if (matchList(songRegex, reqText) != -1) {
     this.res.writeHead(200);
     handleSong(body, options, reqText, sectionRequest);
+    this.res.end();
+  } else if (matchList(helpRegex, reqText) != -1) {
+    this.res.writeHead(200);
+    handleHelp(body, options);
     this.res.end();
   } else if (coolGuyRegex.test(reqText)) {
     this.res.writeHead(200);
@@ -196,6 +201,15 @@ function handleSong(body, options, songCommand, nativeSection) {
       postMessage(body, options);
     }
   }
+}
+
+function handleHelp(body, options) {
+  var helpText = "|||||||||||||||||||||||||||||||||||||||||||||\n";
+  helpText += "                LSJUMBot v0.2                \n";
+  helpText += "|||||||||||||||||||||||||||||||||||||||||||||\n";
+  helpText += "Active Commands:\n";
+  helpText += "~~~~~~~~~~~~~~~~\n";
+  helpText += "\'Show me <song> <sections>\' to get the song for the given sections".
 }
 
 function handleCool(body, options) {
