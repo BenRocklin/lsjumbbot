@@ -54,7 +54,7 @@ module.exports = {
   getAllFriendlyNames: function(machineName) {
     var names = "";
     for (var i = 0; i < titles.titles.length; i++) {
-      names += titles.titles[i][potentialName];
+      names += titles.titles[i][Object.keys(titles.titles[i])[0]];
       if (i != titles.titles.length - 1) {
         names += '\n';
       }
