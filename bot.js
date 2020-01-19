@@ -26,26 +26,7 @@ function respond() {
     console.log("No txt");
     this.res.writeHead(200);
     this.res.end();
-    return
   }
-
-  reqText = request.text
-  if (coolGuyRegex.test(reqText)) {
-    this.res.writeHead(200);
-    postMessage();
-    this.res.end();
-  } else {
-    console.log(matchList(songRegex, reqText))
-    console.log("don't care");
-    this.res.writeHead(200);
-    this.res.end();
-  }
-}
-
-function postMessage() {
-  var botResponse, options, body, botReq;
-
-  botResponse = cool();
 
   options = {
     hostname: 'api.groupme.com',
@@ -58,6 +39,40 @@ function postMessage() {
     "text" : botResponse
   };
 
+  reqText = request.text
+  if (matchList(songRegex, reqText)) {
+    console.log("Song detected");
+  } else if (coolGuyRegex.test(reqText)) {
+    this.res.writeHead(200);
+    postMessage();
+    this.res.end();
+  } else {
+    console.log("No match for " + reqText);
+    this.res.writeHead(200);
+    this.res.end();
+  }
+}
+
+function handleCool 
+
+// function postMessage() {
+//   var botResponse, options, body, botReq;
+
+//   botResponse = cool();
+
+//   options = {
+//     hostname: 'api.groupme.com',
+//     path: '/v3/bots/post',
+//     method: 'POST'
+//   };
+
+//   body = {
+//     "bot_id" : botID,
+//     "text" : botResponse
+//   };
+
+function postMessage(body, options) {
+  var botResponse = body.text;
   console.log('sending ' + botResponse + ' to ' + botID);
 
   botReq = HTTPS.request(options, function(res) {
