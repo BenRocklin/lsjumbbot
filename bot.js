@@ -129,7 +129,8 @@ function getSongCommandSections(songCommand, nativeSection) {
 }
 
 function handleSong(body, options, songCommand, nativeSection) {
-  var urls = songService.getURLs(songCommand, getSongCommandSections(songCommand, nativeSection));
+  var sections = getSongCommandSections(songCommand, nativeSection)
+  var urls = songService.getURLs(songCommand, sections);
 }
 
 function handleCool(body, options) {
