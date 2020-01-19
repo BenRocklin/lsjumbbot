@@ -53,7 +53,9 @@ function respond() {
   }
 }
 
-function handleCool 
+function handleCool(body, options) {
+  return true;
+}
 
 // function postMessage() {
 //   var botResponse, options, body, botReq;
