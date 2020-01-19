@@ -26,8 +26,6 @@ module.exports = {
   },
 
   getFriendlyName: function(machineName) {
-    console.log(titles.titles);
-    console.log(machineName)
     for (var i = 0; i < titles.titles.length; i++) {
       var potentialName = Object.keys(titles.titles[i])[0];
       if (potentialName === machineName) {
