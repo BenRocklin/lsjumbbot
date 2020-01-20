@@ -27,14 +27,17 @@ function matchList(regexList, query) {
 function respond() {
   var request = JSON.parse(this.req.chunks[0]);
   var coolGuyRegex = /^\/cool guy$/;
-  var songRegex = [/^[Ss]how me/, /^[Ss]ong/, /^[Cc]affa pl[sz]/];
-  var helpRegex = [/^[Ss]how me help/, /^[Hh]elp$/];
-  var listRegex = [/^[Ss]how me list/, /^[Ll]ist$/, /^[Ss]ongs$/];
-  var infoRegex = [/^[Ii]nfo/, /^[Ss]how me info/];
-  var namesRegex = [/^[Nn]ames/, /^[Nn]ame/, /^[Ss]how me names/];
+  var songRegex = [/^show me/, /^song/, /^caffa pl[sz]/];
+  var helpRegex = [/^show me help/, /^help$/];
+  var listRegex = [/^show me list/, /^list$/, /^songs$/];
+  var infoRegex = [/^info/, /^show me info/];
+  var namesRegex = [/^names/, /^name/, /^show me names/];
+  var creditsRegex = [/^credits?/];
   
   if (request.sender_type === "bot") {
     console.log("Ignore bot messages.");
+    this.res.writeHead(200);
+    this.res.end();
     return
   }
   console.log(request);
@@ -105,32 +108,32 @@ function respond() {
   };
 
   var reqText = request.text
-  if (matchList(helpRegex, reqText) != -1) {
+  if (matchList(helpRegex, reqText.toLowerCase()) != -1) {
     // help menu
     this.res.writeHead(200);
     handleHelp(body, options);
     this.res.end();
-  } else if (matchList(listRegex, reqText) != -1) {
+  } else if (matchList(listRegex, reqText.toLowerCase()) != -1) {
     // song list
     this.res.writeHead(200);
     handleList(body, options);
     this.res.end();
-  } else if (matchList(namesRegex, reqText) != -1) {
+  } else if (matchList(namesRegex, reqText.toLowerCase()) != -1) {
     // names command
     this.res.writeHead(200);
     handleNames(body, options, reqText);
     this.res.end();
-  } else if (matchList(infoRegex, reqText) != -1) {
+  } else if (matchList(infoRegex, reqText.toLowerCase()) != -1) {
     // info command
     this.res.writeHead(200);
-    handleList(body, options, reqText);
+    handleInfo(body, options, reqText);
     this.res.end();
-  } else if (coolGuyRegex.test(reqText)) {
+  } else if (coolGuyRegex.test(reqText.toLowerCase())) {
     // cool guy basic bot test/easter egg
     this.res.writeHead(200);
     handleCool(body, options);
     this.res.end();
-  } else if (matchList(songRegex, reqText) != -1) {
+  } else if (matchList(songRegex, reqText.toLowerCase()) != -1) {
     // song request
     this.res.writeHead(200);
     handleSong(body, options, reqText, sectionRequest);
@@ -200,7 +203,7 @@ function handleSong(body, options, songCommand, nativeSection) {
   }
   sections = getUnique(sections)
 
-  var machineName = songService.getMachineName(songName);
+  var machineName = songService.checkAllForName(songName);
   console.log("MACHINE: " + machineName);
   var friendlyName = songService.getFriendlyName(machineName);
   console.log("FRIENDLY: " + friendlyName);
@@ -279,6 +282,64 @@ function handleNames(body, options, reqText) {
   // return all alias
   var alias = songService.getAllAliases(machineName);
   body.text = "All names for " + songName + " are listed below and are case-insensitive:\n" + alias.join("\n");
+  postMessage(body, options);
+}
+
+function handleInfo(body, options, reqText) {
+  var commandName = getSongName(reqText, 0).toLowerCase();
+  var mainName, syntax, description, inputs;
+  if (commandName === "" || matchList(infoRegex, commandName) != -1) {
+    // info command
+    mainName = "Info";
+    syntax = "Info <command>\nShow me info <command>";
+    description = "Provides additional info for the requested command. If <command> is left blank, will show info about the \'Info\' command.";
+    inputs = "<command> - The name of the command to find info of, if given. If not, the command \'Info\' is chosen by default."
+  } else if (matchList(helpRegex, commandName) != -1) {
+    // help command
+    mainName = "Help";
+    syntax = "Help\nShow me help";
+    description = "Shows the help menu";
+  } else if (matchList(listRegex, commandName) != -1) {
+    // list command
+    mainName = "List";
+    syntax = "List\nSongs\nShow me list";
+    description = "Lists all songs currently present in the chartbot. Combine this with the `'Names`' command to get all names for the songs returned.";
+  } else if (matchList(namesRegex, commandName) != -1) {
+    // names command
+    mainName = "Names";
+    syntax = "Names <song>\nName <song>\nShow me names <song>";
+    description = "Shows all the (case-insensitive) names for a given song. Any of these may be used as the song title for the `'Song`' command.";
+    inputs = "<song> - The name of the song to find alternate names for. Those struggling to find a name should use the `'List`' command to see one name for each song.";
+  } else if (matchList(songRegex, commandName) != -1) {
+    // song command
+    mainName = "Song";
+    syntax = "Song <song> <sections>\nCaffa pls <song> <sections>\nShow me <song> <sections>";
+    description = "Fetches the song for each section. Only one song may be inputted. However, multiply sections may be optionally specified separated by spaces.";
+    inputs = "<song> - The name of the song to find a chart for. Use `'Names`' for a full list of possible names for a song.\n";
+    inputs += "<sections> - The sections to get the chart for separated by spaces. If left blank, auto-detects the section of the current user. Acceptable sections include `'Altoz`', `'Bonz`', `'CPG`', `'Mellz`', `'Tenrz`', `'Toobz`', and `'Trumpz`'.";
+  } else if (matchList(creditsRegex, commandName) != -1) {
+    // credits command
+    mainName = "Credits";
+  } else {
+    body.text = "Sorry, we could not find the command " + commandName;
+    postMessage(body, options);
+  }
+
+  body.text = "Command: " + mainName + "\n";
+  body.text += "Invocation:\n";
+  body.text += syntax + "\n";
+  body.text += "_______________________________________\n"
+  body.text += "Description: " + description + "\n";
+  if (inputs) {
+    body.text += "Inputs:\n" + inputs;
+  }
+  console.log(body.text.length);
+  postMessage(body, options);
+
+}
+
+function handleCredits(body, options) {
+  body.text = "";
   postMessage(body, options);
 }
 
