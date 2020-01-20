@@ -316,20 +316,20 @@ function handleInfo(body, options, reqText) {
     // list command
     mainName = "List";
     syntax = "List\nSongs\nShow me list";
-    description = "Lists all songs currently present in the chartbot. Combine this with the `'Names`' command to get all names for the songs returned.";
+    description = "Lists all songs currently present in the chartbot. Combine this with the \'Names\' command to get all names for the songs returned.";
   } else if (matchList(namesRegex, commandName) != -1) {
     // names command
     mainName = "Names";
     syntax = "Names <song>\nName <song>\nShow me names <song>";
-    description = "Shows all the (case-insensitive) names for a given song. Any of these may be used as the song title for the `'Song`' command.";
-    inputs = "<song> - The name of the song to find alternate names for. Those struggling to find a name should use the `'List`' command to see one name for each song.";
+    description = "Shows all the (case-insensitive) names for a given song. Any of these may be used as the song title for the \'Song\' command.";
+    inputs = "<song> - The name of the song to find alternate names for. Those struggling to find a name should use the \'List\' command to see one name for each song.";
   } else if (matchList(songRegex, commandName) != -1) {
     // song command
     mainName = "Song";
     syntax = "Song <song> <sections>\nCaffa pls <song> <sections>\nShow me <song> <sections>";
     description = "Fetches the song for each section. Only one song may be inputted. However, multiply sections may be optionally specified separated by spaces.";
-    inputs = "<song> - The name of the song to find a chart for. Use `'Names`' for a full list of possible names for a song.\n";
-    inputs += "<sections> - The sections to get the chart for separated by spaces. If left blank, auto-detects the section of the current user. Acceptable sections include `'Altoz`', `'Bonz`', `'CPG`', `'Mellz`', `'Tenrz`', `'Toobz`', and `'Trumpz`'.";
+    inputs = "<song> - The name of the song to find a chart for. Use \'Names\' for a full list of possible names for a song.\n";
+    inputs += "<sections> - The sections to get the chart for separated by spaces. If left blank, auto-detects the section of the current user. Acceptable sections include \'Altoz\', \'Bonz\', \'CPG\', \'Mellz\', \'Tenrz\', \'Toobz\', and \'Trumpz\'.";
   } else if (matchList(creditsRegex, commandName) != -1) {
     // credits command
     mainName = "Credits";
@@ -368,7 +368,7 @@ function handleCredits(body, options) {
   creditText += "Based off sample bot at https://github.com/groupme/bot-tutorial-nodejs/blob/master/README.md\n";
   creditText += "Original version built January 18th, 2020\n";
   creditText += "Contributors:\n";
-  creditText += "Michael Cai (original inspiration, `'show me`' syntax)";
+  creditText += "Michael Cai (original inspiration, \'show me\' syntax)";
   body.text = creditText;
   postMessage(body, options);
 }
@@ -381,11 +381,11 @@ function handleChangelog(body, options) {
   changeText += "What's New?\n";
   changeText += "_______________________________________\n";
   changeText += "Bug fixes for song names not registering\n";
-  changeText += "New command: `'List`'\n";
-  changeText += "New command: `'Names`'\n";
-  changeText += "New command: `'Info`'\n";
-  changeText += "New command: `'Credits`'\n";
-  changeText += "New command: `'Changelog`'\n";
+  changeText += "New command: \'List\'\n";
+  changeText += "New command: \'Names\'\n";
+  changeText += "New command: \'Info\'\n";
+  changeText += "New command: \'Credits\'\n";
+  changeText += "New command: \'Changelog\'\n";
   changeText += "Help menu expansion to account for new commands";
   body.text = changeText;
   postMessage(body, options);
