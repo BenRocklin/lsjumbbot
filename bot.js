@@ -262,9 +262,8 @@ function handleHelp(body, options) {
   helpText += "_______________________________________\n";
   helpText += "On the way:\n";
   helpText += "_______________________________________\n";
-  helpText += "\'Info [command]\' to get additional information on the command\n";
-  helpText += "\'Canonical <date>\' to get the canonical for the date\n";
-  helpText += "\'Show me a surprise <sections>\' to get a random song\n";
+  helpText += "\'Canonical\' to get the canonical\n";
+  helpText += "\'Show me a surprise\' to get a random song\n";
   helpText += "...and more!";
 
 
