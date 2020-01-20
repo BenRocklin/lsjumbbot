@@ -13,6 +13,14 @@ var botIDTrumpz = process.env.BOT_ID_TRUMPZ;
 
 var BOT_VERSION = 0.3
 
+var coolGuyRegex = /^\/cool guy$/;
+var songRegex = [/^show me/, /^song/, /^caffa pl[sz]/];
+var helpRegex = [/^show me help/, /^help$/];
+var listRegex = [/^show me list/, /^list$/, /^songs$/];
+var infoRegex = [/^info/, /^show me info/];
+var namesRegex = [/^names/, /^name/, /^show me names/];
+var creditsRegex = [/^credits?/];
+
 function matchList(regexList, query) {
   for (var i = 0; i < regexList.length; i++) {
     if (regexList[i].test(query)) {
@@ -26,13 +34,6 @@ function matchList(regexList, query) {
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]);
-  var coolGuyRegex = /^\/cool guy$/;
-  var songRegex = [/^show me/, /^song/, /^caffa pl[sz]/];
-  var helpRegex = [/^show me help/, /^help$/];
-  var listRegex = [/^show me list/, /^list$/, /^songs$/];
-  var infoRegex = [/^info/, /^show me info/];
-  var namesRegex = [/^names/, /^name/, /^show me names/];
-  var creditsRegex = [/^credits?/];
   
   if (request.sender_type === "bot") {
     console.log("Ignore bot messages.");
