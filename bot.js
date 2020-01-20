@@ -19,7 +19,8 @@ var helpRegex = [/^show me help/, /^help$/];
 var listRegex = [/^show me list/, /^list$/, /^songs$/];
 var infoRegex = [/^info/, /^show me info/];
 var namesRegex = [/^names/, /^name/, /^show me names/];
-var creditsRegex = [/^credits?/];
+var creditsRegex = [/^credits/];
+var changelogRegex = [/^changelog/, /^changes/, /^version info/, /^version/]
 
 function matchList(regexList, query) {
   for (var i = 0; i < regexList.length; i++) {
@@ -128,6 +129,16 @@ function respond() {
     // info command
     this.res.writeHead(200);
     handleInfo(body, options, reqText);
+    this.res.end();
+  } else if (matchList(creditsRegex, reqText.toLowerCase()) != -1) {
+    // credits command
+    this.res.writeHead(200);
+    handleCredits(body, options, reqText);
+    this.res.end();
+  } else if (matchList(changelogRegex, reqText.toLowerCase()) != -1) {
+    // changelog command
+    this.res.writeHead(200);
+    handleChangelog(body, options, reqText);
     this.res.end();
   } else if (coolGuyRegex.test(reqText.toLowerCase())) {
     // cool guy basic bot test/easter egg
@@ -247,6 +258,7 @@ function handleHelp(body, options) {
   helpText += "\'List\' to get all songs the bot contains\n";
   helpText += "\'Names\' to find alternate song names\n";
   helpText += "\'Credits\' for all bot credits\n";
+  helpText += "\'Changelog\' for what\'s new\n";
   helpText += "_______________________________________\n";
   helpText += "On the way:\n";
   helpText += "_______________________________________\n";
@@ -321,6 +333,13 @@ function handleInfo(body, options, reqText) {
   } else if (matchList(creditsRegex, commandName) != -1) {
     // credits command
     mainName = "Credits";
+    syntax = "Credits";
+    description = "Provides the credits for the LSJUMBot.";
+  } else if (matchList(changelogRegex, commandName) != -1) {
+    // changelog command
+    mainName = "Changelog";
+    syntax = "Changelog\nChanges\nVersion Info\nVersion";
+    description = "Provides the current version number along with what was added in the given version.";
   } else {
     body.text = "Sorry, we could not find the command " + commandName;
     postMessage(body, options);
@@ -329,9 +348,10 @@ function handleInfo(body, options, reqText) {
   body.text = "Command: " + mainName + "\n";
   body.text += "Invocation:\n";
   body.text += syntax + "\n";
-  body.text += "_______________________________________\n"
+  body.text += "_______________________________________\n";
   body.text += "Description: " + description + "\n";
   if (inputs) {
+    body.text += "_______________________________________\n";
     body.text += "Inputs:\n" + inputs;
   }
   console.log(body.text.length);
@@ -340,7 +360,34 @@ function handleInfo(body, options, reqText) {
 }
 
 function handleCredits(body, options) {
-  body.text = "";
+  var creditText = "|||||||||||||||||||||||||||||||||||||||||||||||||||||\n";
+  creditText += "                    LSJUMBot v" + BOT_VERSION + "\n";
+  creditText += "|||||||||||||||||||||||||||||||||||||||||||||||||||||\n";
+  creditText += "Developed by Benjamin Iver Rocklin for usage of the LSJUMB.\n";
+  creditText += "Source code at https://github.com/BenRocklin/lsjumbbot\n";
+  creditText += "Based off sample bot at https://github.com/groupme/bot-tutorial-nodejs/blob/master/README.md\n";
+  creditText += "Original version built January 18th, 2020\n";
+  creditText += "Contributors:\n";
+  creditText += "Michael Cai (original inspiration, `'show me`' syntax)";
+  body.text = creditText;
+  postMessage(body, options);
+}
+
+function handleChangelog(body, options) {
+  var changeText = "|||||||||||||||||||||||||||||||||||||||||||||||||||||\n";
+  changeText += "                    LSJUMBot v" + BOT_VERSION + "\n";
+  changeText += "|||||||||||||||||||||||||||||||||||||||||||||||||||||\n";
+  changeText += "Release: January 19, 2020\n";
+  changeText += "What's New?\n";
+  changeText += "_______________________________________\n";
+  changeText += "Bug fixes for song names not registering\n";
+  changeText += "New command: `'List`'\n";
+  changeText += "New command: `'Names`'\n";
+  changeText += "New command: `'Info`'\n";
+  changeText += "New command: `'Credits`'\n";
+  changeText += "New command: `'Changelog`'\n";
+  changeText += "Help menu expansion to account for new commands";
+  body.text = changeText;
   postMessage(body, options);
 }
 
